@@ -1,0 +1,19 @@
+.email_middle_component{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: white;
+    cursor: pointer;
+    justify-content: center;
+    margin-left: 0%;
+    padding: 21px 48px;
+    overflow: hidden;
+    margin-right: 10px;
+}
+.email_middle_component:hover{
+    background-color: #eff2f5;
+}
+.email_middle_component .email_middle_title{
+    margin-left: 10px;
+    font-weight: bold;
+}

@@ -1,0 +1,56 @@
+.form{
+    border: 1px solid gray;
+    color: white;
+    position: fixed;
+    bottom: 0;
+    right: 20px;
+    width: 500px;
+    height: 500px;
+    background-color: white;
+}
+.form .formheader{
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(44, 44, 44);
+    padding: 12px ;
+   color: white;
+   align-items: center;
+}
+.form .formheader svg{
+   color: white;
+}
+.form h2{
+   font-size: 20px;
+}
+.form form{
+   color: black;
+   display: flex;
+   flex-direction: column;
+   padding: 20px;
+}
+.form form .to{
+   padding: 10px 20px;
+}
+.form form .subject{
+   padding: 10px 20px;
+}
+.form form .message{
+   height: auto;
+   padding: 20px;
+   height: 275px;
+}
+.form form .to:focus{
+   outline: none;
+}
+.form form .subject:focus{
+   outline: none;
+}
+.form form .message:focus{
+   outline: none;
+}
+.form form .formsubmit{
+   background-color: rgb(37, 2, 37);
+   color: white;
+   padding: 10px 20px;
+   display: inline-block;
+}

@@ -1,0 +1,27 @@
+.composebtn{
+    -webkit-box-shadow: 0 0 10px gray;
+        box-shadow: 0 0 10px gray;
+        border-radius: 19px;
+}
+.sidebar_button{
+    display: block;
+    margin-left: 60px;
+    margin-top: 22px;
+    border-radius: 50px;
+}
+
+.sidebar{
+    padding: 0px 0px;
+    flex: 0.25;
+    box-shadow: 1px 0 5px -2px #888;
+}
+.sidebar_options{
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px;
+}
+.sidebaricon{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}

@@ -1,0 +1,100 @@
+.mailbody{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+.mailbody_header{
+    display: flex;
+    flex-direction: row;
+    padding: 10px 0px;
+    box-shadow: 0 2px 3px -1px rgba(146, 146, 146, 0.664);
+
+}
+.mailbody_header_left{
+   flex: 0.7;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   margin-left: 10px;
+}
+.left_left{
+    flex: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-left: 5px;
+    color: gray;
+    border-right: 0.1px solid gray;
+    margin: 0px 2px;
+
+}
+svg{
+    cursor: pointer;
+}
+.left_middle{
+    flex: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    color: gray;
+    margin-left: 5px;
+    border-right: 0.1px solid gray;
+    margin: 0px 12px;
+}
+.left_right{
+    flex: auto;
+    display: flex;
+    align-items: center;
+    color: gray;
+    justify-content: space-around;
+    margin-left: 5px;
+}
+.mailbody_header_right{
+   flex: 1;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+.mailbody_header_right .emailcounter{
+   margin: 0px 20px;
+}
+.mailbody_header_right svg{
+   margin: 0px 10px;
+}
+
+
+.mail-detail{
+    display: flex;
+    flex-direction: column;
+    flex: auto;
+    padding-left: 20px;
+    padding-top: 20px;
+}
+
+.mail-detail .mailsubject{
+    font-size: 2rem;
+    color: gray;
+    font-weight: bold;
+}
+.mail-detail .mail_user_info{
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+.mail-detail .username{
+    flex: auto;
+    margin-left: 30px;
+    font-size: 20px;
+    font-weight: bold;
+    color: gray;
+}
+.mail-detail .usermailtime{
+   margin-right: 50px;
+   color: gray;
+   font-size: 18px;
+}
+.mail-detail .mailinformation{
+   margin-top: 40px;
+   color: gray;
+   font-size: 18px;
+}

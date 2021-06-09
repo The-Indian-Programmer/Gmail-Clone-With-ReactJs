@@ -1,0 +1,35 @@
+.email{
+    flex: 1;
+}
+.email_header{
+    display: flex;
+    flex-direction: row;
+    padding: 10px 5px;
+    width: 100%;
+    justify-content: space-between;
+}
+.email_header svg{
+    color: gray;
+    cursor: pointer;
+}
+.email_header_left{
+    display: flex;
+    width: 15%;
+    justify-content: space-around;
+}
+.email_header_right{
+    display: flex;
+    width: 15%;
+    justify-content: space-between;
+}
+.emailmiddle{
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    margin-left: 10px;
+}
+.email_lists{
+    overflow: scroll;
+    height: 100%;
+
+}

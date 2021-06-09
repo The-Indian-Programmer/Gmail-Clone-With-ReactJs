@@ -1,0 +1,24 @@
+.email_list{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+.email_list:hover{
+    box-shadow: 0 2px 3px -1px gray;
+}
+.email_list_icon{
+    display: flex;
+    flex: 0.13;
+    padding: 0px 15px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.email_info{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex: auto;
+    font-weight: bold;
+}

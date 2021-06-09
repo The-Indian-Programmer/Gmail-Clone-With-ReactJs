@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@700&display=swap');
+
+.header{
+    box-shadow: 0 2px 10px -1px rgb(180, 180, 180)!important
+}
+.input-field{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 13px;
+}
+.input-field input{
+    background: none;
+}
+.searchicon {
+    color: gray;
+}
+.gmailicon{
+    height: 20px;
+    width: 30px;
+    margin-left:20px;
+}
+.header_left{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.gmailtext{
+    margin-left: 10px;
+    font-size: 25px;
+    font-family: 'Ubuntu', sans-serif;
+    color: gray;
+}
+
+.app_body{
+    display: flex;
+    flex-direction: row;
+    height: 89vh;
+}
