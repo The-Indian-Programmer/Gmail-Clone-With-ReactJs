@@ -5,18 +5,31 @@ import { IconButton } from "@material-ui/core";
 import { useSelector, useDispatch } from "react-redux";
 import { formopen, formclose } from "../action/index";
 import { useForm } from "react-hook-form";
+import { auth, db, provider } from "../FirebaseCode";
+
 const Form = () => {
   const [to, setTo] = useState("");
   const [subject, setSubject] = useState("");
   const [message, setMessage] = useState("");
 
-  const myState = useSelector((state) => state.formhandle);
+  const myState = useSelector((state) => state.signin);
   const dispatch = useDispatch();
-
-  const {register,handleSubmit,watch,errors} = useForm();
+  console.log(myState.state.state.uid);
 
  const formSubmit = (e) =>{
-    
+  db.collection("allemail").add({
+    sentby: myState.state.state.displayName,
+    sentuid:myState.state.state.uid,
+    sentprofile: myState.state.state.photoURL,
+    email: myState.state.state.email,
+    receiveremail:to,
+    receiversubject:subject,
+    receivermessage:message,
+  }).then(() => {
+      console.log("Document successfully written!");
+  }).catch((error) => {
+    console.log("Error writing document: ", error);
+})
     setTo("");
     setSubject("");
     setMessage("");

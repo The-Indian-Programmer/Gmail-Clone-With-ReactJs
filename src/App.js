@@ -18,13 +18,12 @@ function App() {
   const myuser = useSelector((state) => state.signin);
   const [isSignin, setisSignin] = useState(myuser.state)
 
-  console.log(myuser)
   useEffect(() => {
     setisSignin(myuser.state)
   })
 
   return (
-    <div classNameName="app">
+    <div className="app">
     {
       isSignin.user === null ? (<SignIn/>)
        : (
@@ -35,7 +34,7 @@ function App() {
           <Sidebar />
           <Switch>
 
-            <Route path="/mail"> <MailDetail /> </Route>
+            <Route path="/mail/:key"> <MailDetail /> </Route>
             <Route path="/"> <Email /> </Route>
 
           </Switch>

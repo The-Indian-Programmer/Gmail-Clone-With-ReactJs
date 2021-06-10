@@ -11,7 +11,6 @@ export const formclose = () =>{
 }
 
 export const signinwithgoogle = (data) =>{
-    console.log(data)
     return{
         type:"SIGNIN",
         payload:data

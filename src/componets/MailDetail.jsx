@@ -1,6 +1,6 @@
 import { Avatar, IconButton } from "@material-ui/core";
 import "./MailDetail.css";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import ArchiveIcon from "@material-ui/icons/Archive";
 import ReportOutlinedIcon from "@material-ui/icons/ReportOutlined";
@@ -11,16 +11,44 @@ import PlaylistAddCheckOutlinedIcon from "@material-ui/icons/PlaylistAddCheckOut
 import RestoreFromTrashOutlinedIcon from "@material-ui/icons/RestoreFromTrashOutlined";
 import LabelImportantOutlinedIcon from "@material-ui/icons/LabelImportantOutlined";
 import MoreVertOutlinedIcon from "@material-ui/icons/MoreVertOutlined";
-import KeyboardArrowLeftIcon from '@material-ui/icons/KeyboardArrowLeft';
-import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight';
-import KeyboardIcon from '@material-ui/icons/Keyboard';
-import { useHistory } from "react-router";
+import KeyboardArrowLeftIcon from "@material-ui/icons/KeyboardArrowLeft";
+import KeyboardArrowRightIcon from "@material-ui/icons/KeyboardArrowRight";
+import KeyboardIcon from "@material-ui/icons/Keyboard";
+import { useHistory, useParams } from "react-router";
+import { db } from "../FirebaseCode";
 const MailDetail = () => {
-    const history = useHistory();
+  const history = useHistory();
+  const { key } = useParams();
+
+  const [sendby, setSendby] = useState("SendBy");
+  const [message, setMessage] = useState("This is the message");
+  const [profile, setProfile] = useState("");
+  const [timestamp, settimestamp] = useState("10AM");
+  const [subject, setSubject] = useState("This is the subject");
+  console.log(key);
+
+  useEffect(() => {
+    db.collection("allemail")
+      .doc(key)
+      .get()
+      .then((doc) => {
+        if (doc.exists) {
+          setSendby(doc.data().sentby);
+          setMessage(doc.data().receivermessage);
+          setProfile(doc.data().sentprofile);
+          settimestamp(doc.data().timestamp);
+          setSubject(doc.data().receiversubject);
+        } else {
+          // doc.data() will be undefined in this case
+          console.log("No such document!");
+        }
+      });
+  }, [message]);
+
   return (
     <div className="mailbody">
       <div className="mailbody_header">
-        <IconButton onClick={()=>history.push("/")}>
+        <IconButton onClick={() => history.push("/")}>
           <ArrowBackIcon />
         </IconButton>
         <div className="mailbody_header_left">
@@ -41,28 +69,22 @@ const MailDetail = () => {
           </div>
         </div>
         <div className="mailbody_header_right">
-            <p className="emailcounter">1 of 348</p>
-            <KeyboardArrowLeftIcon/>
-            <KeyboardArrowRightIcon/>
-            <KeyboardIcon/>
+          <p className="emailcounter">1 of 348</p>
+          <KeyboardArrowLeftIcon />
+          <KeyboardArrowRightIcon />
+          <KeyboardIcon />
         </div>
       </div>
       <div className="mail-detail">
-            <h2 className="mailsubject">
-                This is the mail subject
-            </h2>
-            <div className="mail_user_info">
-                <Avatar/>
-                <h4 className="username">
-                    Sumit Kosta
-                </h4>
-                <p className="usermailtime">
-                    10PM
-                </p>
-            </div>
-            <div className="mailinformation">
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
-            </div>
+        <h2 className="mailsubject">{subject}</h2>
+        <div className="mail_user_info">
+          <Avatar src={profile} />
+          <h4 className="username">{sendby}</h4>
+          <p className="usermailtime">
+            {new Date(timestamp?.seconds * 1000).toUTCString}
+          </p>
+        </div>
+        <div className="mailinformation">{message}</div>
       </div>
     </div>
   );

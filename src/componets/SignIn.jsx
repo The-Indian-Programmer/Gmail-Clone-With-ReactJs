@@ -12,12 +12,20 @@ const SignIn = () => {
   
 
   const login = () => {
-    auth
-      .signInWithPopup(provider)
+    auth.signInWithPopup(provider)
       .then((result) => {
           dispatch(signinwithgoogle(result.user));
-      })
-      .catch((error) => alert(error.message));
+            db.collection("users").doc(result.user.uid).set({
+                username: result.user.displayName,
+                profile: result.user.photoURL,
+                email: result.user.email
+              }).then(() => {
+                  console.log("Document successfully written!");
+              }).catch((error) => {
+                console.log("Error writing document: ", error);
+            })
+
+          }).catch((error) => alert(error.message));
   };
   return (
     <div className="signin">
