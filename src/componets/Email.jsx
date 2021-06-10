@@ -23,6 +23,7 @@ const Email = () => {
   const myState = useSelector((state) => state.signin);
   // console.log(myState.state.email)
   const [message, setmessage] = useState([]);
+  
   useEffect(() => {
       db.collection("allemail").orderBy('timestamp','desc').onSnapshot((snapshot) =>
           setmessage([...message,snapshot.docs.map((doc) => ({
@@ -31,7 +32,6 @@ const Email = () => {
               }))])
       )
   }, []);
-
   return (
     <div className="email">
       <div className="email_header">
@@ -59,13 +59,13 @@ const Email = () => {
           message.map((emaillist) => (
                  <EmailList key={emaillist.id}
                 id={emaillist.id}
-                 sentby = {emaillist.data.sentby} 
-                 receivermessage={emaillist.data.receivermessage}
-                 sentemail={emaillist.data.email}    
-                 receiversubject={emaillist.data.receiversubject}
-                 sentprofile={emaillist.data.sentprofile}
-                 sentuid={emaillist.data.sentuid}
-                 timestamp={new Date(emaillist.data.timestamp?.seconds*1000).toUTCString}
+                 sentby = {emaillist.data().sentby} 
+                 receivermessage={emaillist.data().receivermessage}
+                 sentemail={emaillist.data().email}    
+                 receiversubject={emaillist.data().receiversubject}
+                 sentprofile={emaillist.data().sentprofile}
+                 sentuid={emaillist.data().sentuid}
+                 timestamp={new Date(emaillist.data().timestamp?.seconds*1000).toUTCString}
                  />
                  )    
           )
